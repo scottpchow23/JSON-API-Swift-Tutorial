@@ -73,9 +73,10 @@ internal func exerciseTwo() {
     let topMovieData = moviesData["feed"]["entry"][0]
     let topMovie = Movie(json: topMovieData)
     
+    
     // Uncomment this print statement when you are ready to check your code!
     
-//    print("The top movie is \(topMovie.name) by \(topMovie.rightsOwner). It costs $\(topMovie.price) and was released on \(topMovie.releaseDate). You can view it on iTunes here: \(topMovie.link)")
+    print("The top movie is \(topMovie.name) by \(topMovie.rightsOwner). It costs $\(topMovie.price) and was released on \(topMovie.releaseDate). You can view it on iTunes here: \(topMovie.link)")
 }
 
 internal func exerciseThree() {
@@ -102,7 +103,17 @@ internal func exerciseThree() {
      */
     var allMovies: [Movie] = []
     
+    for movieData in allMoviesData {
+        allMovies.append(Movie(json: movieData))
+    }
     
+    var disneyMovies: [Movie] = []
+    
+    for movie in allMovies {
+        if movie.rightsOwner.rangeOfString("Disney") != nil {
+            disneyMovies.append(movie)
+        }
+    }
     
     
     /*
@@ -112,20 +123,34 @@ internal func exerciseThree() {
      contains the `String` "Disney". Iterate over all the values in `allMovies` to check!
      
      */
-//    print("The following movies are Disney movies...")
+    print("The following movies are Disney movies... \(disneyMovies[0].name) and \(disneyMovies[1].name)")
     
     
+    var lessThan15: [Movie] = []
     
     
+    for movie in allMovies {
+        if (movie.price <= 15.0) {
+            lessThan15.append(movie)
+        }
+    }
+    print("The following movies are cost less than $15...")
+
+    for movie in lessThan15 {
+        print("\(movie.price) - \(movie.name)")
+    }
     /*
      
      Uncomment the below print statement and then print out the titles and prices of each
      movie that costs less than $15. Iterate over all the values in `allMovies` to check!
      
      */
-//    print("The following movies are cost less than $15...")
     
-    
+    for movie in allMovies {
+        if(movie.releaseDate.rangeOfString("2016") != nil) {
+            print("\(movie.name) - \(movie.releaseDate)")
+        }
+    }
     
     
     /*
@@ -134,7 +159,7 @@ internal func exerciseThree() {
      each movie released in 2016. Iterate over all the values in `allMovies` to check!
      
      */
-//    print("The following movies were released in 2016...")
+    print("The following movies were released in 2016...")
     
     
     
