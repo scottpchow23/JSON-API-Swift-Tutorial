@@ -11,16 +11,19 @@ import SwiftyJSON
 
 struct Movie {
     let name: String
-    let rightsOwner: String
+ //   let rightsOwner: String
     let price: Double
     let link: String
     let releaseDate: String
+    let poster: String
     
     init(json: JSON) {
-        self.name = json["im:name"]["label"].stringValue
-        self.rightsOwner = json["rights"]["label"].stringValue
-        self.price = Double(json["im:price"]["attributes"]["amount"].stringValue)!
-        self.link = json["link"][0]["attributes"]["href"].stringValue
-        self.releaseDate = json["im:releaseDate"]["label"].stringValue
+        self.name = json["trackName"].stringValue
+      //  self.rightsOwner = json["rights"]["label"].stringValue
+      //  print(self.rightsOwner)
+        self.price = json["trackHdPrice"].doubleValue
+        self.link = json["trackViewUrl"].stringValue
+        self.releaseDate = json["releaseDate"].stringValue
+        self.poster = json["artworkUrl60"].stringValue
     }
 }
