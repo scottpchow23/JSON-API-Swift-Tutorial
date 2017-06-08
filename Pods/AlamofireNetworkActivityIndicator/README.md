@@ -1,6 +1,6 @@
 # AlamofireNetworkActivityIndicator
 
-[![Build Status](https://travis-ci.org/Alamofire/AlamofireNetworkActivityIndicator.svg)](https://travis-ci.org/Alamofire/AlamofireNetworkActivityIndicator)
+[![Build Status](https://travis-ci.org/Alamofire/AlamofireNetworkActivityIndicator.svg?branch=master)](https://travis-ci.org/Alamofire/AlamofireNetworkActivityIndicator)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/AlamofireNetworkActivityIndicator.svg)](https://img.shields.io/cocoapods/v/AlamofireNetworkActivityIndicator.svg)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Platform](https://img.shields.io/cocoapods/p/AlamofireNetworkActivityIndicator.svg?style=flat)](http://cocoadocs.org/docsets/AlamofireNetworkActivityIndicator)
@@ -18,12 +18,13 @@ Controls the visibility of the network activity indicator on iOS using Alamofire
 
 ## Requirements
 
-- iOS 8.0+
-- Xcode 7.3+
+- iOS 9.0+
+- Xcode 8.0+
+- Swift 3.0+
 
 ## Dependencies
 
-- [Alamofire 3.3+](https://github.com/Alamofire/Alamofire)
+- [Alamofire 4.0+](https://github.com/Alamofire/Alamofire)
 
 ## Communication
 
@@ -43,16 +44,16 @@ Controls the visibility of the network activity indicator on iOS using Alamofire
 $ gem install cocoapods
 ```
 
-> CocoaPods 0.39.0+ is required.
+> CocoaPods 1.0.0+ is required.
 
 To integrate AlamofireNetworkActivityIndicator into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '8.0'
+platform :ios, '10.0'
 use_frameworks!
 
-pod 'AlamofireNetworkActivityIndicator', '~> 1.0'
+pod 'AlamofireNetworkActivityIndicator', '~> 1.1'
 ```
 
 Then, run the following command:
@@ -75,7 +76,7 @@ $ brew install carthage
 To integrate AlamofireNetworkActivityIndicator into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
-github "Alamofire/AlamofireNetworkActivityIndicator" ~> 1.0
+github "Alamofire/AlamofireNetworkActivityIndicator" ~> 1.1
 ```
 
 ---
@@ -131,6 +132,20 @@ In order to allow Alamofire to continue to be used in App Extensions, this logic
 ## Credits
 
 Alamofire is owned and maintained by the [Alamofire Software Foundation](http://alamofire.org). You can follow them on Twitter at [@AlamofireSF](https://twitter.com/AlamofireSF) for project updates and releases.
+
+## Donations
+
+The [ASF](https://github.com/Alamofire/Foundation#members) is looking to raise money to officially register as a federal non-profit organization. Registering will allow us members to gain some legal protections and also allow us to put donations to use, tax free. Donating to the ASF will enable us to:
+
+* Pay our legal fees to register as a federal non-profit organization
+* Pay our yearly legal fees to keep the non-profit in good status
+* Pay for our mail servers to help us stay on top of all questions and security issues
+* Potentially fund test servers to make it easier for us to test the edge cases
+* Potentially fund developers to work on one of our projects full-time
+
+The community adoption of the ASF libraries has been amazing. We are greatly humbled by your enthusiam around the projects, and want to continue to do everything we can to move the needle forward. With your continued support, the ASF will be able to improve its reach and also provide better legal safety for the core members. If you use any of our libraries for work, see if your employers would be interested in donating. Our initial goal is to raise $1000 to get all our legal ducks in a row and kickstart this campaign. Any amount you can donate today to help us reach our goal would be greatly appreciated.
+
+<a href='https://pledgie.com/campaigns/31474'><img alt='Click here to lend your support to: Alamofire Software Foundation and make a donation at pledgie.com !' src='https://pledgie.com/campaigns/31474.png?skin_name=chrome' border='0' ></a>
 
 ## License
 
