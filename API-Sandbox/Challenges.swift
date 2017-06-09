@@ -27,17 +27,25 @@ internal func exerciseOne() {
     // Alright, now we have a JSON object from SwiftyJSON containing the user data!
     // Let's save the user's first name to a constant!
     let firstName = userData["results"][0]["name"]["first"].stringValue
+    let lastName = userData["results"][0]["name"]["last"].stringValue
+    let streetName = userData["results"][0]["location"]["street"].stringValue
+    let city = userData["results"][0]["location"]["city"].stringValue
+    let state = userData["results"][0]["location"]["state"].stringValue
+    let postCode = userData["results"][0]["location"]["postcode"].numberValue
+    let title = userData["results"][0]["name"]["title"].stringValue
+    let emailAddress = userData["results"][0]["email"].stringValue
+    let cellphoneNumber = userData["results"][0]["cell"].stringValue
     // Do you see what we did there? We navigated down the JSON heirarchy, asked for "results",
     // then the first dictionary value of that array, then the dictionary stored in "name",
     // then the value stored in "first". We  then told it that we wanted the value as a string.
-    
+    print("\(firstName) \(lastName) lives at \(streetName) in \(city), \(state), \(postCode). If you want to contact \(title). \(lastName), you can email \(emailAddress) or call at \(cellphoneNumber).")
     /*
      
      Now it's your turn to get the rest of the values needed to print the following:
      
-     "<first name> <last name> lives at <street name> in <city>, <state>, <post code>.
-     If you want to contact <title>. <last name>, you can email <email address> or
-     call at <cell phone number>."
+     "\(first name) \(last name) lives at \(street name) in \(city), \(state), \(post code).
+     If you want to contact \(title). \(last name), you can email \(email address) or
+     call at \(cell phone number)."
      
      */
     
@@ -68,7 +76,7 @@ internal func exerciseTwo() {
     
     // Uncomment this print statement when you are ready to check your code!
     
-//    print("The top movie is \(topMovie.name) by \(topMovie.rightsOwner). It costs $\(topMovie.price) and was released on \(topMovie.releaseDate). You can view it on iTunes here: \(topMovie.link)")
+    print("The top movie is \(topMovie.name) by \(topMovie.rightsOwner). It costs $\(topMovie.price) and was released on \(topMovie.releaseDate). You can view it on iTunes here: \(topMovie.link)")
 }
 
 internal func exerciseThree() {
@@ -93,9 +101,11 @@ internal func exerciseThree() {
      Figure out a way to turn the allMoviesData array into Movie structs!
      
      */
-    var allMovies: [Movie] = []
     
-    
+    var allMovies = [Movie]()
+    for entry in allMoviesData {
+        allMovies.append(Movie(json: entry))
+    }
     
     
     /*
@@ -105,9 +115,14 @@ internal func exerciseThree() {
      contains the `String` "Disney". Iterate over all the values in `allMovies` to check!
      
      */
-//    print("The following movies are Disney movies:")
+    print("The following movies are Disney movies:")
     
-    
+    for movie in allMovies {
+        let substring = movie.rightsOwner.range(of: "Disney")
+        if (substring != nil) {
+            print(movie.name)
+        }
+    }
     
     
     /*
@@ -116,9 +131,13 @@ internal func exerciseThree() {
      movie that costs less than $15. Iterate over all the values in `allMovies` to check!
      
      */
-//    print("The following movies are cost less than $15:")
+    print("The following movies are cost less than $15:")
     
-    
+    for movie in allMovies {
+        if(movie.price < 15) {
+            print(movie.name + ":" + String(movie.price))
+        }
+    }
     
     
     /*
@@ -127,9 +146,14 @@ internal func exerciseThree() {
      each movie released in 2016. Iterate over all the values in `allMovies` to check!
      
      */
-//    print("The following movies were released in 2016:")
+    print("The following movies were released in 2016:")
     
-    
+    for movie in allMovies {
+        let substring = movie.rightsOwner.range(of: "2016")
+        if (substring != nil) {
+            print(movie.name + ":" + movie.releaseDate)
+        }
+    }
     
     
 }
