@@ -43,8 +43,13 @@ class ViewController: UIViewController {
                     self.movieTitleLabel.text = self.movie?.name
                     self.rightsOwnerLabel.text = self.movie?.rightsOwner
                     self.releaseDateLabel.text = self.movie?.releaseDate
-                    self.priceLabel.text = String(describing: self.movie?.price)
-                    self.loadPoster(urlString: (self.movie?.poster)!)
+                    self.priceLabel.text = "$\(self.movie?.price ?? 0.00)"
+                    if let posterLink = self.movie?.poster {
+                        self.loadPoster(urlString: posterLink)
+                    } else {
+                        print("Couldn't get the poster link.")
+                    }
+                    
                 }
             case .failure(let error):
                 print(error)
@@ -59,11 +64,24 @@ class ViewController: UIViewController {
     
     // Updates the image view when passed a url string
     func loadPoster(urlString: String) {
-        posterImageView.af_setImage(withURL: URL(string: urlString)!)
+        if let url = URL(string: urlString) {
+            posterImageView.af_setImage(withURL: url)
+        } else {
+            print("Bad url.")
+        }
+        
     }
     
     @IBAction func viewOniTunesPressed(_ sender: AnyObject) {
-        UIApplication.shared.openURL(URL(string: (movie?.link)!)!)
+        if let link = movie?.link {
+            if let url = URL(string: link) {
+                UIApplication.shared.openURL(url)
+            } else {
+                print("Malformed url.")
+            }
+            print("Couldn't get the link to the movie.")
+        }
+        
     }
     
 }
